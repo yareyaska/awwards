@@ -1,0 +1,106 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+{% block content %}
+{% load staticfiles %}
+{{block.super}}
+<div class="container">
+    <div class="row">
+<div class="col-md-2"></div>
+
+
+<div class="col-md-8">
+    
+    {% for image in images%}
+    <div class="card">
+        <div class="card-header">
+            <div class="profile-img"><i class="" style="width: 25px;height: 25px; "></i>   </div>
+                <div class="profile-info"><a href="{% url 'profile' %}"><p style="color:black;font-weight:bolder;text-decoration:none;"><b>{{user.username}}</b></p></a></div>
+        </div>
+     
+         <img src="{{image.image.url}}" alt="image" class="img-responsive"style="width: 550px; height: 550px;">
+    <div class="card-footer">
+        <p>{{image.image_description}}</p>
+        <a href="{{image.live_link}}">Live link</a>
+        <a href="{%url 'ratings' user.id%}" style="border:1px solid lightgrey;border-radius:2px;color:black;text-decoration:none"><span style="font-family: 'Metal Mania', cursive;"> Rate</a></span>
+             <a href="comment/{{image.id}}"  style="color:black;"><i class=""></i> </a>     <i class></i>
+
+            
+            <div class="description">
+                <p>
+                    
+                
+                </p>
+            </div>
+        <div class="comments">
+            
+                    
+            </div>
+        </div>
+    </div>
+</div>
+
+    {% endfor %}
+    </div>
+
+</div>
+<div class="col-md-2"></div>
+</div>
+
+<style>
+    .card{
+        background: #fff;
+        width: 550px;
+        
+        overflow:auto;
+    }
+    .card-header{
+        padding: 15px;
+        
+        width: 550px;
+        height:65px;
+
+     }
+
+    .profile-info{
+        display: inline-block;
+        font-size: 20px;
+        font-weight: 700;
+        font-family: 'Metal Mania', cursive;
+
+        }
+    .profile-img{
+        display: inline-block;
+    
+        height: 30px;
+        width: 30px;
+        border-radius: 50%;
+        position: relative;
+        top: 5px;
+        margin-right: 5px;
+
+    }    
+
+    .card-footer{
+        
+        padding: 15px;
+
+    }
+    .likes {
+        font-size: 17px;
+        padding-bottom: 15px;
+        font-family: 'Metal Mania', cursive;
+
+    }
+
+    .description{
+        font-weight: 100;
+        font-family: 'Metal Mania', cursive;
+
+    }
+    .i{
+        width: 25px;
+        height:25px;
+    }
+</style>
+
+{% endblock %}

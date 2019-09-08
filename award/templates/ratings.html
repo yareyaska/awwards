@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+{% block content %}
+{% load staticfiles %}
+{{block.super}}
+<title>Rate Me</title>
+  {{form.media}}
+
+{% block styles %} {% bootstrap_css %}
+  <link rel="stylesheet" href="{% static 'css/award.css' %}"> {% endblock %}
+
+</head>
+
+
+<body>
+  <div class="container">
+    
+    <form  action="{%url 'ratings'%}" method="post" enctype="multipart/form-data">
+      {%csrf_token%}
+
+      {% bootstrap_form form %}
+      <input type="submit" class="btn btn-success btn-lg" value="Post">
+    </form>
+  </div>
+
+
+   
+{% for rating in ratings %}
+   <div style="padding:20px;margin:5px;border:1px solid whitesmoke;background-color: white"class="container rating">
+    <div class="col-md-4 col-sm-4">
+  <p><img class="img-responsive " src="{{rating.user.profile.profile_pic.url}}" style="width:50px;height:50px;border-radius: 100px;"><b>{{rating.user.username}}</b></p>
+
+  <p>{{rating.review}}</p>
+  </div>
+  <div class="col-md-2 col-sm-2">
+    <h6><i>Usability</i></h6>
+    {{rating.usability_rating}}
+  </div>
+  <div class="col-md-2 col-sm-2">
+      <h6><i>Design</i></h6>
+    {{rating.design_rating}}
+  </div>
+  <div class="col-md-2 col-sm-2">
+      <h6><i>content</i></h6>
+    {{rating.content_rating}}
+  </div>
+  <div class="col-md-2 col-sm-2 ">
+      <h6><i>Average</i></h6>
+    {{ rating.content_rating | add:rating.design_rating |add:rating.usability_rating|div:3|truncatechars:6}}
+
+  </div>
+  </div>
+  {% endfor %}
+  {% block scripts %}
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  {% bootstrap_javascript %} {% endblock %}
+
+{% endblock %}
