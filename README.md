@@ -4,7 +4,7 @@
 
 ## Description
 This is an app-rating website where users post their projects and other users can rate it based on 3 criteria after visiting the live site.
-<a href="https://instayu.herokuapp.com/"><img src="/media/photos/6.png"></a>
+<a href="https://instayu.herokuapp.com/"><img src="/media/6.png"></a>
 
 ## Setup/Installation Requirements
 * Python3.6 
