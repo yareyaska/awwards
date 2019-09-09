@@ -11,14 +11,24 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
 import os
-import django_heroku
 import dj_database_url
 from decouple import config,Csv
-
-
 MODE=config("MODE", default="dev")
 SECRET_KEY = config('SECRET_KEY')
 DEBUG = config('DEBUG', default=False, cast=bool)
+
+# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+
+
+# Quick-start development settings - unsuitable for production
+# See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
+
+# SECURITY WARNING: keep the secret key used in production secret!
+
+
+# SECURITY WARNING: don't run with debug turned on in production!
+DEBUG = True
+
 # development
 if config('MODE')=="dev":
    DATABASES = {
@@ -171,4 +181,4 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 django_heroku.settings(locals())
 
-SITE_ID = 1
+SITE_ID = 1yuawwards
