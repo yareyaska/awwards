@@ -181,4 +181,4 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 django_heroku.settings(locals())
 
-SITE_ID = 1yuawwards
+SITE_ID = 1
