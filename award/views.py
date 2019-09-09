@@ -42,7 +42,7 @@ def profile(request):
     current_user = request.user
     profile = Profile.objects.get(user=current_user)
     posts=Image.objects.filter(profile_id=current_user.id)
-    ratings = Rating.objects.filter(profile_id=current_user_id)
+    # ratings = Rating.objects.filter(profile_id=current_user_id)
     return render(request, 'profile-page.html',{"profile":profile,"posts":posts,"ratings":ratings})
 def ratings(request,id):
     current_user = request.user
